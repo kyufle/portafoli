@@ -4,34 +4,61 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { useTranslation } from 'react-i18next';
 import { Maximize2, X } from 'lucide-react';
 
+// Iconos de hugeicons-react
+import {
+    ReactIcon,
+    PhpIcon,
+    SqlIcon,
+    JavaIcon,
+    LaptopProgrammingIcon,
+} from 'hugeicons-react';
+
+// Estilos de Swiper
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+// Assets de CipherType
 import ciphertype1 from '../assets/ciphertype/ciphertype1.png';
 import ciphertype2 from '../assets/ciphertype/ciphertype2.png';
 import ciphertype3 from '../assets/ciphertype/ciphertype3.png';
 import ciphertypeVideo from '../assets/ciphertype/ciphertype.mp4';
 
+// Assets de Simbio
 import simbio1 from '../assets/simbio/simbio1.png';
 import simbio2 from '../assets/simbio/simbio2.png';
 import simbio3 from '../assets/simbio/simbio3.png';
 import simbioVideo from '../assets/simbio/simbio.mp4';
 
+// Assets de Uxia
 import uxia1 from '../assets/uxia/uxia1.png';
 import uxia2 from '../assets/uxia/uxia2.png';
 import uxia3 from '../assets/uxia/uxia3.png';
 import uxiaVideo from '../assets/uxia/uxia.mp4';
 
+// Assets de Moodify
 import moodify1 from '../assets/moodify/moodify1.jpg';
 import moodify2 from '../assets/moodify/moodify2.jpg';
 import moodify3 from '../assets/moodify/moodify3.jpg';
 import moodify4 from '../assets/moodify/moodify4.jpg';
 import moodifyVideo from '../assets/moodify/moodify.mp4';
+import { useTheme } from '../theme/ThemeContext';
 
 export default function Projects() {
   const { t } = useTranslation();
   const [selectedMedia, setSelectedMedia] = useState(null);
+  const { isDark } = useTheme();
+
+  // Configuración de Tags: Icono y Clase de color
+  const tagConfig = {
+    'JavaScript': { icon: JavaIcon, class: 'js' },
+    'PHP': { icon: PhpIcon, class: 'php' },
+    'MySQL': { icon: SqlIcon, class: 'mysql' },
+    'React': { icon: ReactIcon, class: 'react' },
+    'Django': { icon: LaptopProgrammingIcon, class: 'django' },
+    'React Native': { icon: ReactIcon, class: 'react-native' },
+    'Laravel': { icon: LaptopProgrammingIcon, class: 'laravel' },
+  };
 
   const proyectosData = useMemo(() => [
     {
@@ -39,6 +66,7 @@ export default function Projects() {
       name: 'CipherType',
       title: 'CIPHERTYPE',
       description: t('homePage.ciphertype'),
+      tags: ['JavaScript', 'PHP'],
       media: [ciphertype1, ciphertype2, ciphertype3, ciphertypeVideo]
     },
     {
@@ -46,6 +74,7 @@ export default function Projects() {
       name: 'Simbio',
       title: 'SIMBIO',
       description: t('homePage.simbio'),
+      tags: ['JavaScript', 'PHP', 'MySQL'],
       media: [simbio1, simbio2, simbio3, simbioVideo]
     },
     {
@@ -53,6 +82,7 @@ export default function Projects() {
       name: 'Uxia',
       title: 'UXIA',
       description: t('homePage.uxia'),
+      tags: ['React', 'Django', 'MySQL'],
       media: [uxia1, uxia2, uxia3, uxiaVideo]
     },
     {
@@ -60,6 +90,7 @@ export default function Projects() {
       name: 'Moodify',
       title: 'MOODIFY',
       description: t('homePage.moodify'),
+      tags: ['React Native', 'Laravel', 'MySQL'],
       media: [moodify1, moodify2, moodify3, moodify4, moodifyVideo]
     }
   ], [t]);
@@ -72,7 +103,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="proyectos-wrapper">
+    <div className={`proyectos-wrapper ${isDark ? 'dark' : 'light'}`}>
       <div className="main-card">
         
         <nav className="tabs-header">
@@ -87,7 +118,20 @@ export default function Projects() {
           ))}
         </nav>
 
-        <h2 className="project-title">{activeTab.title}</h2>
+        <div className="project-header-info">
+          <h2 className="project-title">{activeTab.title}</h2>
+          <div className="tags-container">
+            {activeTab.tags.map(tag => {
+              const Icon = tagConfig[tag]?.icon;
+              return (
+                <div key={tag} className={`tag-item ${tagConfig[tag]?.class}`}>
+                  {Icon && <Icon size={18} />}
+                  <span>{tag}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         
         <div className="grid-layout">
           <div className="carousel-side">
@@ -108,13 +152,7 @@ export default function Projects() {
                 <SwiperSlide key={idx}>
                   <div className="media-container" onClick={() => setSelectedMedia(item)}>
                     {isVideo(item) ? (
-                      <video 
-                        src={item} 
-                        autoPlay 
-                        loop 
-                        muted 
-                        playsInline 
-                      />
+                      <video src={item} autoPlay loop muted playsInline />
                     ) : (
                       <img src={item} alt="preview" />
                     )}

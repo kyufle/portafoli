@@ -19,7 +19,7 @@ export default function Tecnologies() {
     const {t} = useTranslation();
     return (
         <>
-        <h1>{t('homePage.tecnologies')}</h1>
+        <h1 className='h1-center'>{t('homePage.tecnologies')}</h1>
         <div className="tecnologies-container">
             <div className='conjunt frontend-conjunt'>
                 <h1>Frontend</h1>

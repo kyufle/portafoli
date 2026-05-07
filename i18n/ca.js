@@ -1,7 +1,7 @@
 const translation = {
     header:{
         select:{
-            language: 'idioma',
+            language: 'Idioma',
             catalan: 'Català',
             english: 'Anglès',
             spanish: 'Castellà'
@@ -17,7 +17,7 @@ const translation = {
         simbio: 'Plataforma web per a la gestió de projectes mitjançant etiquetes, dissenyada per connectar col·laboradors amb interessos comuns. Permet seguir perfils i disposa d\'un sistema de xat integrat per facilitar el networking, la resolució de dubtes i el naixement de noves aliances creatives.',
         uxia: 'Plataforma de visualització i creació d\'exposicions de cotxes personalitzades. Incorpora una eina d\'anàlisi intel·ligent capaç de descriure qualsevol vehicle mitjançant reconeixement d\'imatge, oferint detalls precisos sobre la marca i les seves característiques de manera instantània.',
         moodify: 'Aplicació mòbil dissenyada per a la gestió de la salut emocional mitjançant la integració d\'un chatbot d\'IA especialitzat. Inclou un diari d\'emocions personalitzat amb seguiment del descans, enquestes d\'estrès i un fòrum comunitari, creant un entorn híbrid on l\'usuari pot interactuar tant amb la intel·ligència artificial com amb altres persones.',
-        ampliar: 'Fes click per ampliar la foto'
+        ampliar: 'Fes click per ampliar la foto',
     }
 }
 export default translation;
