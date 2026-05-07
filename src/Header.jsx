@@ -19,7 +19,7 @@ export default function Header(){
                 <Select
                 labelId="select-label"
                 id="select-helper"
-                value={i18n.language || 'ca'}
+                value={(i18n.language || 'ca').substring(0,2).toLowerCase()}
                 label={t('header.select.language')}
                 onChange={handleChange}
                 >
