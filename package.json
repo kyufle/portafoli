@@ -11,11 +11,17 @@
     "init-tailwind": "tailwindcss init -p"
   },
   "dependencies": {
+    "@mui/icons-material": "^9.0.1",
+    "@mui/material": "^9.0.1",
+    "@mui/styles": "^6.5.0",
+    "hugeicons-react": "^0.4.0",
     "i18next": "^26.0.9",
     "i18next-browser-languagedetector": "^8.2.1",
+    "lucide-react": "^1.14.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-i18next": "^17.0.6"
+    "react-i18next": "^17.0.6",
+    "swiper": "^12.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
@@ -32,6 +38,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.5.0",
     "postcss": "^8.5.14",
+    "sass-embedded": "^1.99.0",
     "tailwindcss": "^4.2.4",
     "vite": "^8.0.10"
   }

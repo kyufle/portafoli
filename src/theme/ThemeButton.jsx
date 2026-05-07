@@ -1,5 +1,6 @@
 import { useTheme } from './ThemeContext';
-
+import SunnyIcon from '@mui/icons-material/Sunny';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 export default function ThemeButton() {
   const { isDark, syncWithBrowser } = useTheme();
 
@@ -14,7 +15,7 @@ export default function ThemeButton() {
         pointerEvents: 'auto'
       }}
     >
-      {isDark ? '🌙 Modo Oscuro' : '☀️ Modo Claro'} (Browser)
+      {isDark ? <DarkModeIcon/> : <SunnyIcon/>}
     </button>
   );
 }
